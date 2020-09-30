@@ -1,0 +1,53 @@
+autoUpdate:
+  enabled: false
+  schedule: ""
+cluster:
+  clusterName: "tf-jx-sweet-owl"
+  devEnvApprovers: []
+
+  environmentGitOwner: ""
+  project: "jenkinx-1"
+  provider: gke
+  zone: "us-central1-a"
+gitops: true
+environments:
+- key: dev
+- key: staging
+- key: production
+ingress:
+  domain: ""
+  externalDNS: false
+  tls:
+    email: ""
+    enabled: false
+    production: true
+kaniko: true
+storage:
+  backup:
+    enabled: true
+    url: gs://backup-tf-jx-sweet-owl-b4f62aec4916
+  logs:
+    enabled: true
+    url: gs://logs-tf-jx-sweet-owl-b4f62aec4916
+  reports:
+    enabled: true
+    url: gs://reports-tf-jx-sweet-owl-b4f62aec4916
+  repository:
+    enabled: true
+    url: gs://repository-tf-jx-sweet-owl-b4f62aec4916
+secretStorage: vault
+vault:
+  name: tf-jx-sweet-owl
+  bucket: vault-tf-jx-sweet-owl-b4f62aec4916
+  key: crypto-key-tf-jx-sweet-owl-b4f62aec4916
+  keyring: keyring-tf-jx-sweet-owl-b4f62aec4916
+  serviceAccount: tf-jx-sweet-owl-vt
+velero:
+  namespace: velero
+  schedule: "0 * * * *"
+  serviceAccount: tf-jx-sweet-owl-vo
+  ttl: "720h0m0s"  
+versionStream:
+  ref: master
+  url: https://github.com/jenkins-x/jenkins-x-versions.git
+webhook: "prow"
